@@ -735,3 +735,24 @@
           }
         };
 
+
+// Insight Button Toggle Logic
+window.toggleInsight = function(btn) {
+    var content = btn.closest('.step-content').querySelector('.insight-content');
+    if (content) {
+        var isHidden = content.style.display === 'none' || content.style.display === '';
+        content.style.display = isHidden ? 'block' : 'none';
+        btn.style.opacity = isHidden ? '0.8' : '1';
+    }
+}
+
+// Phase Detail Toggle Logic (버튼이 phase-header 내에 있는 새 구조)
+window.togglePhaseDetail = function(btn) {
+    var phase = btn.closest('.roadmap-phase');
+    var detailBody = phase.querySelector('.phase-detail-body');
+    var arrow = btn.querySelector('.ph-arrow');
+    var isHidden = !detailBody || detailBody.style.display === 'none' || detailBody.style.display === '';
+    if (detailBody) detailBody.style.display = isHidden ? 'block' : 'none';
+    if (arrow) arrow.textContent = isHidden ? '▲' : '▼';
+}
+
